@@ -8,7 +8,7 @@ const Cover = React.forwardRef<HTMLDivElement>((_, ref) => {
           <div className="cover__ornament cover__ornament--top">✦ ✦ ✦</div>
 
           <div className="cover__title-section">
-            <h1 className="cover__title">Granny's</h1>
+            <h1 className="cover__title">Granny bell's</h1>
             <h1 className="cover__title cover__title--accent">Journal</h1>
             <div className="cover__rule" />
             <p className="cover__subtitle">
