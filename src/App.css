@@ -1,0 +1,465 @@
+/* ─── App Layout ─────────────────────────────────────────── */
+.app {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: radial-gradient(ellipse at center, #ffd8e6 0%, #f6b8cd 52%, #e592b4 100%);
+  font-family: Georgia, 'Times New Roman', serif;
+  overflow: auto;
+}
+
+/* ─── Book Wrapper ───────────────────────────────────────── */
+.book-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.book-scene {
+  filter: drop-shadow(0 12px 40px rgba(0, 0, 0, 0.7));
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* ─── Page Base ──────────────────────────────────────────── */
+.page {
+  background-color: #fff5f9;
+  overflow: hidden;
+  cursor: default;
+}
+
+.page__inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding:
+    calc(36px * var(--book-scale, 1))
+    calc(32px * var(--book-scale, 1))
+    calc(20px * var(--book-scale, 1));
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* ─── Cover Page ─────────────────────────────────────────── */
+.page--cover {
+  background: linear-gradient(160deg, #ffbfd6 0%, #f792bb 48%, #ea6fa3 100%);
+}
+
+.page__cover-inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(20px * var(--book-scale, 1));
+  box-sizing: border-box;
+}
+
+.cover__border {
+  width: 100%;
+  height: 100%;
+  border: 2px solid #fff0f6;
+  outline: 1px solid rgba(255, 240, 246, 0.45);
+  outline-offset: -6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: calc(24px * var(--book-scale, 1)) calc(16px * var(--book-scale, 1));
+  box-sizing: border-box;
+}
+
+.cover__ornament {
+  color: #fff0f6;
+  font-size: calc(11px * var(--book-scale, 1));
+  letter-spacing: calc(5px * var(--book-scale, 1));
+  opacity: 0.8;
+}
+
+.cover__title-section {
+  text-align: center;
+}
+
+.cover__title {
+  font-size: calc(44px * var(--book-scale, 1));
+  font-weight: 700;
+  letter-spacing: calc(3px * var(--book-scale, 1));
+  color: #fff8fb;
+  margin: 0;
+  line-height: 1.1;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.cover__title--accent {
+  color: #ffe3ee;
+  font-style: italic;
+}
+
+.cover__rule {
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #fff0f6, transparent);
+  margin: calc(12px * var(--book-scale, 1)) auto;
+}
+
+.cover__rule--thin {
+  width: 50%;
+  opacity: 0.6;
+}
+
+.cover__subtitle {
+  color: #fff1f6;
+  font-size: calc(11px * var(--book-scale, 1));
+  letter-spacing: calc(2px * var(--book-scale, 1));
+  text-transform: uppercase;
+  margin: calc(6px * var(--book-scale, 1)) 0 0;
+  font-style: italic;
+}
+
+.cover__flourish {
+  font-size: calc(44px * var(--book-scale, 1));
+  color: #fff0f6;
+  line-height: 1;
+  opacity: 0.85;
+}
+
+.cover__bottom {
+  text-align: center;
+}
+
+.cover__year {
+  color: #fff0f6;
+  font-size: calc(13px * var(--book-scale, 1));
+  letter-spacing: calc(4px * var(--book-scale, 1));
+  margin: calc(6px * var(--book-scale, 1)) 0 0;
+}
+
+/* ─── Content / Intro Pages ──────────────────────────────── */
+.page--content {
+  background-color: #fff6fa;
+  background-image:
+    linear-gradient(rgba(232, 130, 170, 0.08) 1px, transparent 1px);
+  background-size: 100% calc(28px * var(--book-scale, 1));
+}
+
+.page--content::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 12px;
+  background: linear-gradient(to right, rgba(0,0,0,0.07), transparent);
+  pointer-events: none;
+}
+
+.page--content::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 10px;
+  background: linear-gradient(to left, rgba(0,0,0,0.05), transparent);
+  pointer-events: none;
+}
+
+.page__header {
+  margin-bottom: calc(16px * var(--book-scale, 1));
+}
+
+.page__chapter-label {
+  font-size: calc(10px * var(--book-scale, 1));
+  letter-spacing: calc(3px * var(--book-scale, 1));
+  text-transform: uppercase;
+  color: #b06b87;
+}
+
+.page__chapter-title {
+  font-size: calc(20px * var(--book-scale, 1));
+  color: #8e3d63;
+  margin: calc(3px * var(--book-scale, 1)) 0 calc(8px * var(--book-scale, 1));
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.page__rule {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, #f58bb3, rgba(245, 139, 179, 0.12));
+  margin-bottom: calc(6px * var(--book-scale, 1));
+}
+
+.page__rule--short {
+  width: 40px;
+  height: 1px;
+  background: #f58bb3;
+  margin: calc(8px * var(--book-scale, 1)) 0 calc(5px * var(--book-scale, 1));
+}
+
+.page__date {
+  font-size: calc(10px * var(--book-scale, 1));
+  color: #b06b87;
+  letter-spacing: 1px;
+  margin: calc(3px * var(--book-scale, 1)) 0 0;
+  font-style: italic;
+}
+
+.page__body {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-height: 0;
+  padding-right: calc(6px * var(--book-scale, 1));
+  scrollbar-width: thin;
+  overscroll-behavior: contain;
+}
+
+.page__dropcap {
+  font-size: calc(13px * var(--book-scale, 1));
+  line-height: 1.7;
+  color: #6f3550;
+  text-align: justify;
+  margin: 0 0 calc(12px * var(--book-scale, 1));
+  hyphens: auto;
+}
+
+.dropcap {
+  float: left;
+  font-size: calc(48px * var(--book-scale, 1));
+  line-height: 0.75;
+  padding-right: calc(6px * var(--book-scale, 1));
+  padding-top: calc(5px * var(--book-scale, 1));
+  color: #ec6f9d;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.page__text {
+  font-size: calc(13px * var(--book-scale, 1));
+  line-height: 1.7;
+  color: #6f3550;
+  text-align: justify;
+  margin: 0 0 calc(12px * var(--book-scale, 1));
+  hyphens: auto;
+}
+
+.page__text--faded {
+  color: #b78498;
+  font-style: italic;
+  font-size: calc(11px * var(--book-scale, 1));
+}
+
+.page__ornament {
+  text-align: center;
+  color: #f58bb3;
+  font-size: calc(12px * var(--book-scale, 1));
+  margin: calc(8px * var(--book-scale, 1)) 0;
+  letter-spacing: calc(6px * var(--book-scale, 1));
+}
+
+.page__signature {
+  margin-top: calc(14px * var(--book-scale, 1));
+}
+
+.page__signature-text {
+  font-size: calc(12px * var(--book-scale, 1));
+  color: #9a5872;
+  font-style: italic;
+  margin: 0;
+}
+
+.page__signature-name {
+  font-size: calc(17px * var(--book-scale, 1));
+  color: #8e3d63;
+  font-family: 'Brush Script MT', cursive, Georgia, serif;
+  margin: calc(3px * var(--book-scale, 1)) 0 0;
+  font-style: italic;
+}
+
+.page__footer {
+  margin-top: auto;
+  padding-top: calc(10px * var(--book-scale, 1));
+  text-align: center;
+  border-top: 1px solid rgba(245, 139, 179, 0.28);
+}
+
+.page__number {
+  font-size: calc(10px * var(--book-scale, 1));
+  color: #b06b87;
+  letter-spacing: 2px;
+  font-style: italic;
+}
+
+/* ─── Gallery Page ───────────────────────────────────────── */
+.page--gallery {
+  background-color: #fff6fa;
+}
+
+/* ─── Collage ────────────────────────────────────────────── */
+.collage {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: calc(14px * var(--book-scale, 1)) calc(10px * var(--book-scale, 1));
+  padding: calc(8px * var(--book-scale, 1)) calc(4px * var(--book-scale, 1));
+}
+
+.collage__photo {
+  background: #fff9fc;
+  border: none;
+  padding:
+    calc(5px * var(--book-scale, 1))
+    calc(5px * var(--book-scale, 1))
+    calc(18px * var(--book-scale, 1));
+  box-shadow:
+    2px 3px 8px rgba(0, 0, 0, 0.35),
+    0 1px 2px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transform-origin: center center;
+}
+
+.collage__photo:hover {
+  box-shadow:
+    4px 8px 20px rgba(0, 0, 0, 0.5),
+    0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 5;
+}
+
+.collage__img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+  filter: blur(2.2px) brightness(0.9) saturate(0.82);
+  transition: filter 0.25s ease;
+}
+
+.collage__photo:hover .collage__img {
+  filter: blur(0px) brightness(1) saturate(1);
+}
+
+/* ─── Lightbox ───────────────────────────────────────────── */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+  padding: 16px;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.lightbox__content {
+  position: relative;
+  max-width: min(90vw, 640px);
+  cursor: default;
+  animation: scaleIn 0.2s ease;
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.92); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.lightbox__image {
+  width: 100%;
+  max-height: 75vh;
+  object-fit: contain;
+  display: block;
+  border: 2px solid rgba(255, 214, 230, 0.9);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.8);
+}
+
+.lightbox__title {
+  text-align: center;
+  color: #fff0f6;
+  font-style: italic;
+  font-size: 14px;
+  margin: 10px 0 0;
+  letter-spacing: 1px;
+}
+
+.lightbox__close {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 214, 230, 0.85);
+  background: #d95d92;
+  color: #fff7fb;
+  font-size: 13px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+}
+
+.lightbox__close:hover {
+  background: #c84d83;
+}
+
+/* ─── Navigation Controls ────────────────────────────────── */
+.book-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.book-controls__btn {
+  padding: 8px 18px;
+  background: linear-gradient(180deg, #f8a7c7 0%, #ea79a8 100%);
+  color: #fff8fb;
+  border: 1px solid #ffd9e8;
+  border-radius: 3px;
+  font-family: Georgia, serif;
+  font-size: 13px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  white-space: nowrap;
+  /* Prevent tap delay on mobile */
+  touch-action: manipulation;
+}
+
+.book-controls__btn:hover:not(:disabled) {
+  background: linear-gradient(180deg, #ffbdd5 0%, #ef89b2 100%);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+  transform: translateY(-1px);
+}
+
+.book-controls__btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.book-controls__indicator {
+  color: #ffe9f1;
+  font-size: 13px;
+  letter-spacing: 2px;
+  font-style: italic;
+  min-width: 52px;
+  text-align: center;
+}
